@@ -9,6 +9,7 @@ class PhoneNumber < ApplicationRecord
     number ||= rand(1111111111..9999999999)
     loop do
       break unless PhoneNumber.where(phone_number: number).exists?
+
       number = rand(1111111111..9999999999)
     end
     number

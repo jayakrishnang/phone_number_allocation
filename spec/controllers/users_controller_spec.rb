@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.describe Api::V1::UsersController, type: :controller do
   let!(:user) { create(:user) }
@@ -10,7 +12,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   end
 
   describe 'GET Users#me' do
-  	context 'get profile' do
+    context 'get profile' do
       it 'returns user profile with code 200' do
         request.content_type = 'application/json'
         get :me
@@ -23,7 +25,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   end
 
   describe 'POST Users#allocate_phone_number' do
-  	context 'post allocate_phone_number preferred' do
+    context 'post allocate_phone_number preferred' do
       it 'returns user profile with code 200' do
         request.content_type = 'application/json'
         post :allocate_phone_number, params: { phone_number: '1231231239' }
@@ -35,7 +37,6 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
     context 'post allocate_phone_number preferred' do
       it 'returns user profile with code 200' do
-
         request.content_type = 'application/json'
         post :allocate_phone_number, params: { phone_number: '1231231240' }
         json_response = JSON.parse(response.body).with_indifferent_access
